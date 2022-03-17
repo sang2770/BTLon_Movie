@@ -10,5 +10,7 @@
     <color name="colorPrimary">#151c25</color>
     <color name="colorPrimaryDark">#151c25</color>
     <color name="colorAccent">#f1b814</color>
-
+    <color name="Blue">#7F62FF</color>
+    <color name="violet">#B62E9B</color>
+    <color name="pink">#FF4BD2</color>
 </resources>

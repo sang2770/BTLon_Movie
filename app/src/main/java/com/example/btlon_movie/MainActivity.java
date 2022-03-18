@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         RadioSlider.setupWithViewPager(sliderPage, true);
         // Set Time
         Timer timer=new Timer();
-        timer.scheduleAtFixedRate(new MainActivity.SliderTimer(), 4000, 6000);
+        timer.scheduleAtFixedRate(new MainActivity.SliderTimer(), 6000, 6000);
 
         //thiet lap recylerview
         //init data

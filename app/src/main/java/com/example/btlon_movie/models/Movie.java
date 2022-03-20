@@ -1,6 +1,7 @@
 package com.example.btlon_movie.models;
 
 public class Movie {
+    private int ID;
     private String title;
     private int CoverPhoto;
     private String description;
@@ -9,7 +10,8 @@ public class Movie {
     private String rating;
     private String streamingLink;
 
-    public Movie(String title, int coverPhoto, int thumbnail) {
+    public Movie(int id,String title, int coverPhoto, int thumbnail) {
+        this.ID=id;
         this.title = title;
         this.CoverPhoto = coverPhoto;
         this.thumbnail = thumbnail;

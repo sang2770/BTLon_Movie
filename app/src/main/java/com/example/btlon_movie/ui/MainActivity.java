@@ -9,6 +9,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.btlon_movie.models.Movie;
 import com.example.btlon_movie.adapter.MovieAdapter;
@@ -54,10 +55,10 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         //thiet lap recylerview
         //init data
         List<Movie> lstMovie=new ArrayList<>();
-        lstMovie.add(new Movie("The Conjuring",R.drawable.no_way_home,R.drawable.the_conjuring));
-        lstMovie.add(new Movie("The Shining",R.drawable.no_way_home,R.drawable.the_shining));
-        lstMovie.add(new Movie("Up",R.drawable.no_way_home,R.drawable.up));
-        lstMovie.add(new Movie("Your Name",R.drawable.no_way_home,R.drawable.your_name));
+        lstMovie.add(new Movie(1,"The Conjuring",R.drawable.no_way_home,R.drawable.the_conjuring));
+        lstMovie.add(new Movie(2,"The Shining",R.drawable.no_way_home,R.drawable.the_shining));
+        lstMovie.add(new Movie(3,"Up",R.drawable.no_way_home,R.drawable.up));
+        lstMovie.add(new Movie(4,"Your Name",R.drawable.no_way_home,R.drawable.your_name));
 
         MovieAdapter movieAdapter=new MovieAdapter(this,lstMovie,this);
         MoveRV.setAdapter(movieAdapter);
@@ -68,16 +69,19 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
     @Override
     public void onMovieClick(Movie movie, ImageView movieImageView) {
         //tạo vận chuyển animation giữa 2 actyvity
-        Intent intent=new Intent(this, MovieDetailActivity.class);
-        intent.putExtra("title",movie.getTitle());
-        intent.putExtra("imgUrl",movie.getThumbnail());
-        intent.putExtra("imgCover",movie.getCoverPhoto());
+        Intent intent1=new Intent(MainActivity.this, MovieDetailActivity.class);
+        intent1.putExtra("title",movie.getTitle());
+        intent1.putExtra("imgUrl",movie.getThumbnail());
+        intent1.putExtra("imgCover",movie.getCoverPhoto());
 
 
         //tạo animation
         ActivityOptions activityOptions=ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,
                 movieImageView,"shareName");
-        startActivity(intent,activityOptions.toBundle());
+
+        startActivity(intent1,activityOptions.toBundle());
+
+
     }
 
     class  SliderTimer extends TimerTask{

@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.btlon_movie.R;
-import com.example.btlon_movie.adapter.CastAdapter;
-import com.example.btlon_movie.models.Cast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView tv_title,tv_description;
     private FloatingActionButton play_fab;
     private RecyclerView RvCast;
-    private CastAdapter castAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +35,6 @@ public class MovieDetailActivity extends AppCompatActivity {
         //lấy dữ liệu
         iniView();
 
-        //xây dựng list cast
-        setuplistcast();
 
     }
     void iniView(){
@@ -50,7 +46,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             int imageCover=bundle.getInt("imgCover");
 
             play_fab=findViewById(R.id.play_fab);
-            RvCast=findViewById(R.id.RvCast);
+
 
             MovieThumbnailImg=findViewById(R.id.detail_movie_img);
             Glide.with(this).load(imageResoureceId).into(MovieThumbnailImg);
@@ -68,15 +64,5 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         }
     }
-    void setuplistcast(){
-        List<Cast> mdata=new ArrayList<>();
-        mdata.add(new Cast("name",R.drawable.andrew_garfield));
-        mdata.add(new Cast("name",R.drawable.tobey_maguire));
-        mdata.add(new Cast("name",R.drawable.benedict_cumberbatch));
-        mdata.add(new Cast("name",R.drawable.tom_holland));
 
-        castAdapter =new CastAdapter(this,mdata);
-        RvCast.setAdapter(castAdapter);
-        RvCast.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-    }
 }

@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTLon_Movie">
         <activity
-            android:name=".ui.VideoActivity"
+            android:name=".ui.MyMovie"
             android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".ui.VideoActivity"
+            android:exported="false">
 
         </activity>
         <activity
@@ -28,7 +33,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

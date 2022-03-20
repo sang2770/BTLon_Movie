@@ -1,5 +1,6 @@
 package com.example.btlon_movie.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.example.btlon_movie.adapter.MovieItemClickListener;
 import com.example.btlon_movie.R;
 import com.example.btlon_movie.models.Slide;
 import com.example.btlon_movie.adapter.SlidePagesAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -64,6 +67,25 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         MoveRV.setAdapter(movieAdapter);
         MoveRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
 
+
+        //Menu bottom
+        BottomNavigationView menu=findViewById(R.id.Navigation);
+        menu.setSelectedItemId(R.id.mainActivity);
+        menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.myMovie:
+                        startActivity(new Intent(MainActivity.this, MyMovie.class));
+                        overridePendingTransition(0,0);
+                        return  true;
+                    case R.id.mainActivity:
+                        return true;
+
+                }
+                return false;
+            }
+        });
     }
 
     @Override

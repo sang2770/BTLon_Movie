@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/myHome">
+    <fragment
+        android:id="@+id/myHome"
+        android:name="com.example.btlon_movie.MyHome"
+        android:label="fragment_my_home"
+        tools:layout="@layout/fragment_my_home" />
+    <fragment
+        android:id="@+id/list_Favorite"
+        android:name="com.example.btlon_movie.List_Favorite"
+        android:label="fragment_list__favorite"
+        tools:layout="@layout/fragment_list__favorite" />
+
+
+</navigation>

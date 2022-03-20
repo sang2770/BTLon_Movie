@@ -3,7 +3,6 @@
     <item
         android:title="Home"
         android:id="@+id/MyHome"
-
         android:icon="@drawable/ic_baseline_home_24"/>
     <item
         android:title="My movies"

@@ -1,13 +1,21 @@
-package com.example.btlon_movie;
+package com.example.btlon_movie.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
+import com.example.btlon_movie.models.Movie;
+import com.example.btlon_movie.adapter.MovieAdapter;
+import com.example.btlon_movie.adapter.MovieItemClickListener;
+import com.example.btlon_movie.R;
+import com.example.btlon_movie.models.Slide;
+import com.example.btlon_movie.adapter.SlidePagesAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -15,7 +23,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MovieItemClickListener {
     private ArrayList<Slide> ListSlide;
     private ViewPager sliderPage;
     private SlidePagesAdapter MySlideAdapter;
@@ -46,16 +54,32 @@ public class MainActivity extends AppCompatActivity {
         //thiet lap recylerview
         //init data
         List<Movie> lstMovie=new ArrayList<>();
-        lstMovie.add(new Movie("The Conjuring",R.drawable.the_conjuring));
-        lstMovie.add(new Movie("The Shining",R.drawable.the_shining));
-        lstMovie.add(new Movie("Up",R.drawable.up));
-        lstMovie.add(new Movie("Your Name",R.drawable.your_name));
+        lstMovie.add(new Movie("The Conjuring",R.drawable.no_way_home,R.drawable.the_conjuring));
+        lstMovie.add(new Movie("The Shining",R.drawable.no_way_home,R.drawable.the_shining));
+        lstMovie.add(new Movie("Up",R.drawable.no_way_home,R.drawable.up));
+        lstMovie.add(new Movie("Your Name",R.drawable.no_way_home,R.drawable.your_name));
 
-        MovieAdapter movieAdapter=new MovieAdapter(this,lstMovie);
+        MovieAdapter movieAdapter=new MovieAdapter(this,lstMovie,this);
         MoveRV.setAdapter(movieAdapter);
         MoveRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
 
     }
+
+    @Override
+    public void onMovieClick(Movie movie, ImageView movieImageView) {
+        //tạo vận chuyển animation giữa 2 actyvity
+        Intent intent=new Intent(this, MovieDetailActivity.class);
+        intent.putExtra("title",movie.getTitle());
+        intent.putExtra("imgUrl",movie.getThumbnail());
+        intent.putExtra("imgCover",movie.getCoverPhoto());
+
+
+        //tạo animation
+        ActivityOptions activityOptions=ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,
+                movieImageView,"shareName");
+        startActivity(intent,activityOptions.toBundle());
+    }
+
     class  SliderTimer extends TimerTask{
 
         @Override

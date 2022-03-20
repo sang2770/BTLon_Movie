@@ -1,4 +1,4 @@
-package com.example.btlon_movie;
+package com.example.btlon_movie.models;
 
 public class Slide {
     private int image;

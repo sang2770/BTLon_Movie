@@ -1,4 +1,4 @@
-package com.example.btlon_movie;
+package com.example.btlon_movie.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,15 +10,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.btlon_movie.R;
+import com.example.btlon_movie.models.Movie;
+
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
     Context context;
     List<Movie> mdata;
+    MovieItemClickListener movieItemClickListener;
 
-    public MovieAdapter(Context context, List<Movie> data) {
+    public MovieAdapter(Context context, List<Movie> data,MovieItemClickListener listener) {
         this.context = context;
         this.mdata = data;
+        movieItemClickListener=listener;
     }
 
     @NonNull
@@ -52,6 +57,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
             super(itemView);
             TvTitle=itemView.findViewById(R.id.item_movie_title);
             ImgMovie=itemView.findViewById(R.id.item_movie_img);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    movieItemClickListener.onMovieClick(mdata.get(getAdapterPosition()),ImgMovie);
+                }
+            });
         }
     }
 }

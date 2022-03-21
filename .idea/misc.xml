@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/btn.xml" value="0.2203125" />
+        <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/deleteicon.xml" value="0.2203125" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/gradient.xml" value="0.2203125" />
+        <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2203125" />
+        <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.2203125" />
+        <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/ic_baseline_playlist_add_check_24.xml" value="0.2203125" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/navigation.xml" value="0.15729166666666666" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/radio_slider.xml" value="0.1125" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/drawable/selected_radio.xml" value="0.1125" />
@@ -16,13 +20,14 @@
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/activity_movie_detail.xml" value="0.20416666666666666" />
-        <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/activity_my_movie.xml" value="0.20416666666666666" />
+        <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/activity_my_movie.xml" value="0.22" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/activity_video.xml" value="0.1" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/fragment_list__favorite.xml" value="0.20416666666666666" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/fragment_my_home.xml" value="0.17255434782608695" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/item_cast.xml" value="0.20416666666666666" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/item_movie.xml" value="0.20416666666666666" />
+        <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/myitemmovie.xml" value="0.22" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/layout/silde_item.xml" value="0.15" />
         <entry key="..\:/Ki2-Nam3/ThietBiDiDong/BTLon_Movie/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/drawable/gradient.xml" value="0.1" />

@@ -10,26 +10,23 @@ public class Movie {
     private String rating;
     private String streamingLink;
 
-    public Movie(int id,String title, int coverPhoto, int thumbnail) {
-        this.ID=id;
+    public Movie(int ID, String title, int coverPhoto, String description, int thumbnail, String studio, String rating, String streamingLink) {
+        this.ID = ID;
         this.title = title;
-        this.CoverPhoto = coverPhoto;
-        this.thumbnail = thumbnail;
-    }
-
-    public Movie(String title, int thumbnail) {
-        this.title = title;
-        this.thumbnail = thumbnail;
-    }
-
-
-    public Movie(String title, String description, int thumbnail, String studio, String rating, String streamingLink) {
-        this.title = title;
+        CoverPhoto = coverPhoto;
         this.description = description;
         this.thumbnail = thumbnail;
         this.studio = studio;
         this.rating = rating;
         this.streamingLink = streamingLink;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public int  getCoverPhoto() {

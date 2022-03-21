@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         //thiet lap recylerview
         //init data
         List<Movie> lstMovie=new ArrayList<>();
-        lstMovie.add(new Movie(1,"The Conjuring",R.drawable.no_way_home,R.drawable.the_conjuring));
-        lstMovie.add(new Movie(2,"The Shining",R.drawable.no_way_home,R.drawable.the_shining));
-        lstMovie.add(new Movie(3,"Up",R.drawable.no_way_home,R.drawable.up));
-        lstMovie.add(new Movie(4,"Your Name",R.drawable.no_way_home,R.drawable.your_name));
+        lstMovie.add(new Movie(1,"The Conjuring",R.drawable.no_way_home," ",R.drawable.the_conjuring,"", "", "" ));
+        lstMovie.add(new Movie(2,"The Shining",R.drawable.no_way_home,"",R.drawable.the_shining,"", "", ""  ));
+        lstMovie.add(new Movie(3,"Up",R.drawable.no_way_home," ",R.drawable.up,"", "", "" ));
+        lstMovie.add(new Movie(4,"Your Name",R.drawable.no_way_home," ",R.drawable.your_name,"", "", "" ));
 
         MovieAdapter movieAdapter=new MovieAdapter(this,lstMovie,this);
         MoveRV.setAdapter(movieAdapter);

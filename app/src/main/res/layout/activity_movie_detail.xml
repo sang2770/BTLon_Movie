@@ -70,7 +70,7 @@
 
         <TextView
 
-            android:textColor="#556f9a"
+            android:textColor="@color/white"
             android:id="@+id/detail_movie_desc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -81,6 +81,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_movie_img" />
+
+        <CheckBox
+            android:id="@+id/CkLike"
+            android:layout_width="230dp"
+            android:layout_height="31dp"
+            android:text="Yêu Thích"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_img"
+            tools:layout_editor_absoluteY="297dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

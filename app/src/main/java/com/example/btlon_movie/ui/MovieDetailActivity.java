@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView tv_title,tv_description;
     private FloatingActionButton play_fab;
     private RecyclerView RvCast;
+    private CheckBox Cklike;
 
 
     @Override
@@ -42,6 +45,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             String movieTitle=bundle.getString("title");
             int imageResoureceId=bundle.getInt("imgUrl");
             int imageCover=bundle.getInt("imgCover");
+            boolean like=bundle.getString("rating")=="like"?true:false;
 
             play_fab=findViewById(R.id.play_fab);
 
@@ -55,6 +59,11 @@ public class MovieDetailActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(movieTitle);
             tv_description=findViewById(R.id.detail_movie_desc);
             MovieThumbnailImg.setImageResource(imageResoureceId);
+            Cklike=findViewById(R.id.CkLike);
+            Cklike.setChecked(like);
+
+
+
 
             //set animation
             MovieCoverImg.setAnimation(AnimationUtils.loadAnimation(this,R.anim.scale_animtion));

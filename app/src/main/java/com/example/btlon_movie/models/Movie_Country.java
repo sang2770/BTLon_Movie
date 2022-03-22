@@ -1,10 +1,10 @@
 package com.example.btlon_movie.models;
 
-public class movie_country {
+public class Movie_Country {
     private int ID_Movie;
     private int ID_Country;
 
-    public movie_country(int ID_Movie, int ID_Country) {
+    public Movie_Country(int ID_Movie, int ID_Country) {
         this.ID_Movie = ID_Movie;
         this.ID_Country = ID_Country;
     }

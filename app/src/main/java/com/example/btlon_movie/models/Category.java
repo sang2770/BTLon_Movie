@@ -1,12 +1,12 @@
 package com.example.btlon_movie.models;
 
-public class category {
+public class Category {
     private int ID;
     private String Name;
 
-    public category(int ID, String name) {
+    public Category(int ID, String name) {
         this.ID = ID;
-        Name = name;
+        this.Name = name;
     }
 
     public int getID() {

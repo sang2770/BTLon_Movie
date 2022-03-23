@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
     private List<Movie> lstMovie,lstActionbMovie,lstHorrorMovie,lstDramaMovie,lstCartoonMovie,lstAdventureMovie;
     private List<Category> lstCategory;
     private List<Movie_Category> lstMovieCategory;
+    
 
 
     @Override
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         lstMovie.add(new Movie(3,"Up",R.drawable.up_bg," ",R.drawable.up,"", "", "" ));
         lstMovie.add(new Movie(4,"Your Name",R.drawable.your_name_bg," ",R.drawable.your_name,"", "", "" ));
         lstMovie.add(new Movie(5,"Doremon",R.drawable.doremon_bg," ",R.drawable.doremon,"", "", "" ));
-        lstMovie.add(new Movie(6,"End Game",R.drawable.endgame_bg," ",R.drawable.endgame,"", "", "" ));
+        lstMovie.add(new Movie(6,"End Game",R.drawable.endgame_bg," ",0x7f0700cc,"", "", "" ));
         lstMovie.add(new Movie(7,"A Silent Void",R.drawable.a_silent_voice_bg," ",R.drawable.a_silent_voice,"", "", "" ));
         lstMovie.add(new Movie(8,"Bathman",R.drawable.batman_bg," ",R.drawable.batman,"", "", "" ));
         lstMovie.add(new Movie(9,"Get Out",R.drawable.get_out_bg," ",R.drawable.get_out,"", "", "" ));

@@ -179,10 +179,15 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
                     case R.id.myMovie:
                         startActivity(new Intent(MainActivity.this, MyMovie.class));
                         overridePendingTransition(0,0);
+                        finishAffinity();
+                        return  true;
+                    case R.id.UserInfo:
+                        startActivity(new Intent(MainActivity.this, UserActivity.class));
+                        overridePendingTransition(0,0);
+                        finishAffinity();
                         return  true;
                     case R.id.mainActivity:
                         return true;
-
                 }
                 return false;
             }

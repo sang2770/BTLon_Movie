@@ -40,14 +40,14 @@
         tools:layout_editor_absoluteX="50dp" >
         <EditText
             android:textColor="@color/black"
-            android:id="@+id/LoginUserName"
+            android:id="@+id/Email"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="Tên đăng nhập"/>
+            android:hint="Email"/>
         <EditText
             android:textColor="@color/black"
             android:inputType="textPassword"
-            android:id="@+id/LoginPassword"
+            android:id="@+id/Password"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="Mật khẩu"/>
@@ -76,6 +76,8 @@
             android:text="Bạn chưa có tài khoản?"
             android:textColor="#fff"/>
         <TextView
+            android:clickable="true"
+            android:id="@+id/ChangeRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đăng ký"

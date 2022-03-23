@@ -41,6 +41,12 @@ public class MyMovie extends AppCompatActivity {
                     case R.id.mainActivity:
                         startActivity(new Intent(MyMovie.this, MainActivity.class));
                         overridePendingTransition(0,0);
+                        finishAffinity();
+                        return  true;
+                    case R.id.UserInfo:
+                        startActivity(new Intent(MyMovie.this, UserActivity.class));
+                        overridePendingTransition(0,0);
+                        finishAffinity();
                         return  true;
                     case R.id.myMovie:
                         return true;

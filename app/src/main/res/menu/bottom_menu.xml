@@ -8,4 +8,8 @@
         android:title="My movies"
         android:id="@+id/myMovie"
         android:icon="@drawable/ic_baseline_playlist_play_24"/>
+    <item
+        android:title="User"
+        android:id="@+id/UserInfo"
+        android:icon="@drawable/ic_baseline_person_24"/>
 </menu>

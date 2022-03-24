@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
     private List<Movie> lstMovie,lstActionbMovie,lstHorrorMovie,lstDramaMovie,lstCartoonMovie,lstAdventureMovie;
     private List<Category> lstCategory;
     private List<Movie_Category> lstMovieCategory;
-    
+    private FireB
 
 
     @Override
@@ -180,10 +180,15 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
                     case R.id.myMovie:
                         startActivity(new Intent(MainActivity.this, MyMovie.class));
                         overridePendingTransition(0,0);
+                        finishAffinity();
+                        return  true;
+                    case R.id.UserInfo:
+                        startActivity(new Intent(MainActivity.this, UserActivity.class));
+                        overridePendingTransition(0,0);
+                        finishAffinity();
                         return  true;
                     case R.id.mainActivity:
                         return true;
-
                 }
                 return false;
             }

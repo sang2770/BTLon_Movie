@@ -48,7 +48,7 @@
             android:text="Tên đăng nhập:"/>
         <EditText
             android:textColor="@color/black"
-            android:id="@+id/RegisterUserName"
+            android:id="@+id/RegisterEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             />
@@ -91,6 +91,8 @@
             android:text="Bạn có tài khoản?"
             android:textColor="#fff"/>
         <TextView
+            android:clickable="true"
+            android:id="@+id/ChangeLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đăng nhập"

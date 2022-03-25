@@ -1,6 +1,7 @@
 package com.example.btlon_movie.ui;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.icu.util.ULocale;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.btlon_movie.models.Category;
 import com.example.btlon_movie.models.Movie;
@@ -23,6 +25,11 @@ import com.example.btlon_movie.models.Slide;
 import com.example.btlon_movie.adapter.SlidePagesAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
     private List<Movie> lstMovie,lstActionbMovie,lstHorrorMovie,lstDramaMovie,lstCartoonMovie,lstAdventureMovie;
     private List<Category> lstCategory;
     private List<Movie_Category> lstMovieCategory;
-    private FireB
+
+
 
 
     @Override
@@ -69,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
 
         //thiet lap recylerview
         //init data
-        lstMovie=new ArrayList<>();
-        lstMovie.add(new Movie(1,"The Conjuring",R.drawable.the_conjuring_bg," ",R.drawable.the_conjuring,"", "", "" ));
+
+        /*lstMovie.add(new Movie(1,"The Conjuring",R.drawable.the_conjuring_bg," ",R.drawable.the_conjuring,"", "", "" ));
         lstMovie.add(new Movie(2,"The Shining",R.drawable.the_shining_bg,"",R.drawable.the_shining,"", "", ""  ));
         lstMovie.add(new Movie(3,"Up",R.drawable.up_bg," ",R.drawable.up,"", "", "" ));
         lstMovie.add(new Movie(4,"Your Name",R.drawable.your_name_bg," ",R.drawable.your_name,"", "", "" ));
@@ -81,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         lstMovie.add(new Movie(9,"Get Out",R.drawable.get_out_bg," ",R.drawable.get_out,"", "", "" ));
         lstMovie.add(new Movie(10,"hereditary",R.drawable.hereditary_bg," ",R.drawable.hereditary,"", "", "" ));
         lstMovie.add(new Movie(11,"IT",R.drawable.it_bg," ",R.drawable.it,"", "", "" ));
-
+*/
         //Khởi lạo list thể loại
         lstCategory=new ArrayList<>();
         lstCategory.add(new Category(1,"Action"));
@@ -120,14 +128,19 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
 
 
 
-        movieAdapter=new MovieAdapter(this,lstMovie,this);
+        lstMovie=new ArrayList<>();
+        //getListMovie("");
+        movieAdapter=new MovieAdapter(this,lstMovie,MainActivity.this);
+
         Categorytab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()){
                     case 0:
-                        movieAdapter=new MovieAdapter(MainActivity.this,lstMovie,MainActivity.this);
-                        MoveRV.setAdapter(movieAdapter);
+
+                        getListMovie("");
+
+                        Toast.makeText(MainActivity.this, "muahaha", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
 
@@ -194,6 +207,58 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
             }
         });
     }
+    private void getListMovie(String keys){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myref= database.getReference();
+
+        myref.child("Category/1/Name").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                lstMovie=new ArrayList<>();
+                {
+                    String category=snapshot.getValue(String.class);
+                    if(category!=null){
+                      //   lstMovie.add(movie);
+                        Toast.makeText(MainActivity.this,category, Toast.LENGTH_SHORT).show();
+
+                    }
+                    Toast.makeText(MainActivity.this, "hung", Toast.LENGTH_SHORT).show();
+
+
+                }
+                //Toast.makeText(MainActivity.this, "ttt", Toast.LENGTH_SHORT).show();
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                /*String category=snapshot.getValue(String.class);
+                if(category!=null){
+                    //   lstMovie.add(movie);
+
+                    Toast.makeText(MainActivity.this,category, Toast.LENGTH_SHORT).show();
+
+                }
+                Toast.makeText(MainActivity.this, "hung", Toast.LENGTH_SHORT).show();*/
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     @Override
     public void onMovieClick(Movie movie, ImageView movieImageView) {
@@ -201,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         Intent intent1=new Intent(MainActivity.this, MovieDetailActivity.class);
         intent1.putExtra("title",movie.getTitle());
         intent1.putExtra("imgUrl",movie.getThumbnail());
-        intent1.putExtra("imgCover",movie.getCoverPhoto());
+        intent1.putExtra("imgCover",movie.getImage());
         intent1.putExtra("rating",movie.getRating());
 
 

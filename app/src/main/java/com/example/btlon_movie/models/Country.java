@@ -4,6 +4,9 @@ public class Country {
     private int ID;
     private String Name;
 
+    public Country() {
+    }
+
     public Country(int ID, String name) {
         this.ID = ID;
         Name = name;

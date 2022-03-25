@@ -4,6 +4,9 @@ public class Category {
     private int ID;
     private String Name;
 
+    public Category() {
+    }
+
     public Category(int ID, String name) {
         this.ID = ID;
         this.Name = name;

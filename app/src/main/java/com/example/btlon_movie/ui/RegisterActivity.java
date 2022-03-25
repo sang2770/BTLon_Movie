@@ -16,18 +16,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.btlon_movie.R;
+import com.example.btlon_movie.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText TxtEmail, TxtPassword;
     Button btnLogin;
     TextView Change;
     ProgressDialog progressDialog;
-
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +81,10 @@ public class RegisterActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         if (task.isSuccessful()) {
                             // Sign in success
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            User Account= CreateAccount(user.getEmail(), password, user.getUid());
+                            mDatabase.child("User").child(user.getUid()).setValue(Account);
+
                             Intent intent=new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finishAffinity();
@@ -88,5 +95,11 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private User CreateAccount(String email, String password, String Uuid)
+    {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        User user=new User(Uuid, email, password, "Client");
+        return user;
     }
 }

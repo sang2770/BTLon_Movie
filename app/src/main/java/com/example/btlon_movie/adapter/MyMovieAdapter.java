@@ -62,9 +62,13 @@ public class MyMovieAdapter extends BaseAdapter {
         }else{
             viewHolder= (ViewHolder) v.getTag();
         }
-        viewHolder.Name.setText(data.get(i).getTitle());
+        viewHolder.Name.setText(data.get(i).getName());
         viewHolder.Description.setText(data.get(i).getDescription());
-        viewHolder.image.setImageResource(R.drawable.joker);
+        String name =data.get(i).getThumbnail();
+        Context context = viewHolder.image.getContext();
+        int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
+        viewHolder.image.setImageResource(id);
+        
         return v;
     }
 }

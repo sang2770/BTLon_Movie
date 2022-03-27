@@ -1,6 +1,7 @@
 package com.example.btlon_movie.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +41,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.TvTitle.setText(mdata.get(position).getTitle());
-        holder.ImgMovie.setImageResource(mdata.get(position).getThumbnail());
+        holder.TvTitle.setText(mdata.get(position).getName());
+        String name =mdata.get(position).getThumbnail();
+        Context context = holder.ImgMovie.getContext();
+        int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
+        holder.ImgMovie.setImageResource(id);
     }
 
     @Override

@@ -1,5 +1,19 @@
 package com.example.btlon_movie.models;
 
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.example.btlon_movie.ui.MainActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Movie {
     private int ID;
     private String Name;
@@ -7,28 +21,32 @@ public class Movie {
     private String Description;
     private String thumbnail;
     private String language;
-    private Category Category;
-    private  Country Country;
+    private List<Category> category=new ArrayList<>();
+    private  List<Country> country=new ArrayList<>();
     private String rating;
     private String Link;
     private int Year;
 
+
     public Movie() {
     }
 
-    public Movie(int ID, String name, String image, String description, String thumbnail, String language, Category category, Country country, String rating, String link, int year) {
+    public Movie(int ID, String name, String image, String description, String thumbnail, String language, List<Category> category, List<Country> country, String rating, String link, int year) {
         this.ID = ID;
         Name = name;
         Image = image;
         Description = description;
         this.thumbnail = thumbnail;
         this.language = language;
-        this.Category = category;
-        this.Country = country;
+        this.category=category;
+        this.country=country;
+
         this.rating = rating;
         Link = link;
         Year = year;
     }
+
+
 
     public int getID() {
         return ID;
@@ -38,7 +56,7 @@ public class Movie {
         this.ID = ID;
     }
 
-    public String getTitle() {
+    public String getName() {
         return Name;
     }
 
@@ -46,8 +64,8 @@ public class Movie {
         Name = name;
     }
 
-    public int getImage() {
-        return Integer.parseInt(Image);
+    public String getImage() {
+        return Image;
     }
 
     public void setImage(String image) {
@@ -62,8 +80,8 @@ public class Movie {
         Description = description;
     }
 
-    public int getThumbnail() {
-        return Integer.parseInt(thumbnail);
+    public String getThumbnail() {
+        return thumbnail;
     }
 
     public void setThumbnail(String thumbnail) {
@@ -78,20 +96,34 @@ public class Movie {
         this.language = language;
     }
 
-    public Category getCategory() {
-        return Category;
+    public List<Category> getCategory() {
+        return category;
+    }
+    public String getstrCategory() {
+        String theloai="Category :";
+        for(int i=0;i<category.size();i++){
+            theloai = theloai+" "+category.get(i).getName();
+        }
+        return theloai;
     }
 
-    public void setCategory(Category category) {
-        this.Category = category;
+    public void setCategory(List<Category> category) {
+        this.category = category;
     }
 
-    public Country getCountry() {
-        return Country;
+    public List<Country> getCountry() {
+        return country;
+    }
+    public String getstrCountry() {
+        String Quocgia="Country :";
+        for(int i=0;i<country.size();i++){
+            Quocgia = Quocgia+" "+country.get(i).getName();
+        }
+        return Quocgia;
     }
 
-    public void setCountry(Country country) {
-        this.Country = country;
+    public void setCountry(List<Country> country) {
+        this.country = country;
     }
 
     public String getRating() {
@@ -117,6 +149,7 @@ public class Movie {
     public void setYear(int year) {
         Year = year;
     }
+
     /*public Movie(int ID, String title, int coverPhoto, String description, int thumbnail, String studio, String rating, String streamingLink) {
         this.ID = ID;
         this.title = title;

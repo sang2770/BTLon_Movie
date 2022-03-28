@@ -28,7 +28,7 @@ import java.util.List;
 public class MovieDetailActivity extends AppCompatActivity {
 
     private ImageView MovieThumbnailImg,MovieCoverImg;
-    private TextView tv_title,tv_description;
+    private TextView tv_title,tv_description, TxtYear, TxtRate, TxtLanguage;
     private FloatingActionButton play_fab;
     private RecyclerView RvCast;
     private CheckBox Cklike;
@@ -42,8 +42,6 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         //lấy dữ liệu
         iniView();
-
-
     }
     void iniView(){
         Intent intent=getIntent();
@@ -52,11 +50,22 @@ public class MovieDetailActivity extends AppCompatActivity {
             String movieTitle=bundle.getString("title");
             String imageResoureceId=bundle.getString("imgUrl");
             String imageCover=bundle.getString("imgCover");
+            String Rate=bundle.getString("rating");
+            String Language=bundle.getString("Language");
+            int Year=bundle.getInt("Year");
             boolean like=bundle.getString("rating").equals("Like")?true:false;
             int ID=bundle.getInt("ID");
 
-
+            //Play Video
             play_fab=findViewById(R.id.play_fab);
+            play_fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intentPlay=new Intent(MovieDetailActivity.this, VideoActivity.class);
+                    intentPlay.putExtra("IdVideo",bundle.getString("Link") );
+                    startActivity(intentPlay);
+                }
+            });
 
 
             MovieThumbnailImg=findViewById(R.id.detail_movie_img);
@@ -73,6 +82,12 @@ public class MovieDetailActivity extends AppCompatActivity {
             tv_title.setText(movieTitle);
             getSupportActionBar().setTitle(movieTitle);
             tv_description=findViewById(R.id.detail_movie_desc);
+            TxtYear=findViewById(R.id.TxtNam);
+            TxtYear.setText("Năm: "+Year);
+            TxtLanguage=findViewById(R.id.TxtNgonNgu);
+            TxtLanguage.setText("Ngôn ngữ: "+ Language);
+            TxtRate=findViewById(R.id.TxtDanhGia);
+            TxtRate.setText("Đánh giá: "+Rate);
             MovieThumbnailImg.setImageResource(id);
 
             Cklike=findViewById(R.id.CkLike);

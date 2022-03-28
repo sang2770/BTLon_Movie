@@ -36,15 +36,7 @@ public class MyMovie extends AppCompatActivity {
         //Load dữ liệu
         data=new ArrayList<Movie>();
         getListdata();
-       /*data.add(new Movie(1,"Joker",R.drawable.joker+"","phim moi",R.drawable.joker+"","",null,null,"","",1111));
-        data.add(new Movie(2,"Joker",R.drawable.joker+"","phim moi",R.drawable.joker+"","",null,null,"","",1111));
 
-*//*
-        *//*data.add(new Movie(1,"Joker",1,"Phim mới", 1,"","",""));
-        data.add(new Movie(1,"Joker",1,"Phim mới", 1,"", "", ""));
-        data.add(new Movie(3,"Joker",1,"Phim mới", 1,"", "", ""));*//*
-        myMovieAdapter=new MyMovieAdapter(this, data);
-        listView.setAdapter(myMovieAdapter);*/
         //Menu bottom
         BottomNavigationView menu=findViewById(R.id.Navigation_MyMovie);
         menu.setSelectedItemId(R.id.myMovie);

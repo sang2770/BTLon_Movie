@@ -3,7 +3,9 @@ package com.example.btlon_movie.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import com.example.btlon_movie.R;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -18,11 +20,13 @@ public class VideoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video);
         YouTubePlayerView youTubePlayerView = findViewById(R.id.VideoController);
         getLifecycle().addObserver(youTubePlayerView);
+        Intent intent=getIntent();
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = "Qzc_aX8c8g4";
+                String videoId = intent.getStringExtra("IdVideo").split("=")[1].trim();
                 youTubePlayer.loadVideo(videoId, 0);
+                youTubePlayer.play();
             }
         });
     }

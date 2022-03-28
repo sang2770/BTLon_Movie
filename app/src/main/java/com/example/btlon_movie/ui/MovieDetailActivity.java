@@ -66,8 +66,6 @@ public class MovieDetailActivity extends AppCompatActivity {
                     startActivity(intentPlay);
                 }
             });
-
-
             MovieThumbnailImg=findViewById(R.id.detail_movie_img);
             Context context = MovieThumbnailImg.getContext();
             int id = context.getResources().getIdentifier(imageResoureceId, "drawable", context.getPackageName());

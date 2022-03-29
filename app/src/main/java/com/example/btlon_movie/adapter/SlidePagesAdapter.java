@@ -4,22 +4,25 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.btlon_movie.DownloadImageTask;
 import com.example.btlon_movie.R;
+import com.example.btlon_movie.models.Movie;
 import com.example.btlon_movie.models.Slide;
 
 import java.util.ArrayList;
 
 public class SlidePagesAdapter extends PagerAdapter {
     private Context context;
-    private ArrayList<Slide> ListSlide;
+    private ArrayList<Movie> ListSlide;
 
-    public SlidePagesAdapter(Context context, ArrayList<Slide> listSlide) {
+    public SlidePagesAdapter(Context context, ArrayList<Movie> listSlide) {
         this.context = context;
         ListSlide = listSlide;
     }
@@ -28,16 +31,18 @@ public class SlidePagesAdapter extends PagerAdapter {
     public int getCount() {
         return ListSlide.size();
     }
-
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View slideLayout=inflater.inflate(R.layout.silde_item, null);
+
         ImageView SlideImg=slideLayout.findViewById(R.id.imageView);
         TextView SlideTitle=slideLayout.findViewById(R.id.Silde_title);
-        SlideImg.setImageResource(ListSlide.get(position).getImage());
-        SlideTitle.setText(ListSlide.get(position).getTitle());
+        new DownloadImageTask(SlideImg)
+                .execute(ListSlide.get(position).getImage());
+
+        SlideTitle.setText(ListSlide.get(position).getName());
 
         container.addView(slideLayout);
         return slideLayout;

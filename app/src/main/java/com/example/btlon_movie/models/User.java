@@ -10,8 +10,16 @@ public class User {
     private String Account;
     private String Password;
     private String Type;
-    private List<Movie> MyList;
+    private List<IDMovie> MyList;
+    public class IDMovie{
+        private int ID;
+        public IDMovie() {
+        }
+        public IDMovie(int ID) {
+            this.ID = ID;
+        }
 
+    }
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
@@ -60,14 +68,14 @@ public class User {
         Type = type;
     }
 
-    public List<Movie> getMyList() {
+    public List<IDMovie> getMyList() {
         return MyList;
     }
 
-    public void setMyList(List<Movie> myList) {
+    public void setMyList(List<IDMovie> myList) {
         MyList = myList;
     }
-    public void addMyList(Movie myMovie) {
+    public void addMyList(IDMovie myMovie) {
         MyList.add(myMovie);
     }
 

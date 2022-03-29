@@ -11,6 +11,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.icu.util.ULocale;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -41,7 +42,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements MovieItemClickListener {
-    private ArrayList<Slide> ListSlide;
+    private ArrayList<Movie> ListSlide;
     private ViewPager sliderPage;
     private SlidePagesAdapter MySlideAdapter;
     private TabLayout RadioSlider;
@@ -52,10 +53,8 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
     private List<Category> lstCategory;
     private List<Country> lstCountry;
     private List<Movie_Category> lstMovieCategory;
-
-
-
-
+    FirebaseDatabase database;
+    DatabaseReference myref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,22 +64,15 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         RadioSlider=findViewById(R.id.radioSelector);
         MoveRV=findViewById(R.id.Rv_movie);
         Categorytab=findViewById(R.id.tabLayout);
-
+        database=FirebaseDatabase.getInstance();
+        myref= database.getReference();
         //Tao Slider
         ListSlide=new ArrayList<>();
-        ListSlide.add(new Slide(R.drawable.joker,"BatMan"));
-        ListSlide.add(new Slide(R.drawable.star,"Star"));
-        MySlideAdapter = new SlidePagesAdapter(this, ListSlide);
-
-        sliderPage.setAdapter(MySlideAdapter);
-
+        GetDataSlider();
         RadioSlider.setupWithViewPager(sliderPage, true);
         // Set Time
         Timer timer=new Timer();
         timer.scheduleAtFixedRate(new MainActivity.SliderTimer(), 6000, 6000);
-
-        //thiet lap recylerview
-        //init data
 
         //Khởi lạo list thể loại
         lstCategory=new ArrayList<>();
@@ -90,15 +82,9 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         getListdata("","Country");
         //khơi tao list movie_category
         lstMovieCategory=new ArrayList<>();
-
-
-
-      lstMovie= new ArrayList<>();
-       // lstMovie.add(new Movie( 10, "kkk", 0x7f07008e+"", "" ,R.drawable.endgame_bg+"", "", null,null, "", "", 2001));
+        lstMovie= new ArrayList<>();
         MoveRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
         getListdata("","Movie");
-
-
         Categorytab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -143,9 +129,6 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
 
             }
         });
-
-
-
         //Menu bottom
         BottomNavigationView menu=findViewById(R.id.Navigation);
         menu.setSelectedItemId(R.id.mainActivity);
@@ -172,12 +155,9 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
     }
     //lấy dữ liệu từ firebase
     private void getListdata(String keys,String child){
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
-        DatabaseReference myref= database.getReference();
+        myref= database.getReference();
         List<Category> DScategory=new ArrayList<>();
         List<Country> DScountry=new ArrayList<>();
-
-
         myref.child(child).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -197,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
                             }
                             movie.setCategory(DScategory);
                             movie.setCountry(DScountry);
-                            
+
                             if(keys==""){
                                 lstMovie.add(movie);
 
@@ -212,7 +192,6 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
                                     }
                                 }
                             }
-
                         }
                         if(child=="Category"){
                             Category category=sanp.getValue(Category.class);
@@ -222,13 +201,10 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
                             Country country =sanp.getValue(Country.class);
                             lstCountry.add(country);
                         }
-
                 }
 
                 movieAdapter=new MovieAdapter(MainActivity.this,lstMovie,MainActivity.this);
                 MoveRV.setAdapter(movieAdapter);
-
-
             }
 
             @Override
@@ -279,5 +255,28 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
             });
 
         }
+    }
+    void GetDataSlider()
+    {
+        myref.child("Movie").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot sanp:snapshot.getChildren()){
+                    Movie movie=sanp.getValue(Movie.class);
+                    if(movie.getRating().contains("Like"))
+                    {
+                        ListSlide.add(movie);
+                    }
+                }
+                MySlideAdapter = new SlidePagesAdapter(MainActivity.this, ListSlide);
+                sliderPage.setAdapter(MySlideAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

@@ -3,6 +3,9 @@ package com.example.btlon_movie.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.btlon_movie.models.Movie;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import com.example.btlon_movie.R;
 import com.example.btlon_movie.ui.MovieDetailActivity;
@@ -73,8 +77,10 @@ public class MyMovieAdapter extends BaseAdapter {
         viewHolder.Description.setText(data.get(i).getDescription());
         String name =data.get(i).getThumbnail();
         Context context = viewHolder.image.getContext();
-        int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
-        viewHolder.image.setImageResource(id);
+        /*int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
+        viewHolder.image.setImageResource(id);*/
+        new DownloadImageTask(viewHolder.image)
+                .execute(name);
         viewHolder.BtnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,5 +90,29 @@ public class MyMovieAdapter extends BaseAdapter {
             }
         });
         return v;
+    }
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 }

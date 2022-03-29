@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.btlon_movie.R;
 import com.example.btlon_movie.adapter.MovieAdapter;
@@ -15,6 +16,8 @@ import com.example.btlon_movie.models.Category;
 import com.example.btlon_movie.models.Country;
 import com.example.btlon_movie.models.Movie;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -62,29 +65,44 @@ public class MyMovie extends AppCompatActivity {
             }
         });
     }
-    private void getListdata(){
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
-        DatabaseReference myref= database.getReference();
+    private void getListdata() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myref = database.getReference();
+        if (user != null) {
+            String IDuser = user.getUid();
+            myref.child("User/" + IDuser + "/MyList").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    myref.child("Movie").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
 
-        myref.child("Movie").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot sanp : snapshot1.getChildren()) {
+                                    Movie movie = sanp.getValue(Movie.class);
+                                    if (snapshot.hasChild("" + movie.getID())) {
+                                        data.add(movie);
 
-                for(DataSnapshot sanp:snapshot.getChildren()){
-                    Movie movie=sanp.getValue(Movie.class);
-                    if(movie.getRating().equals("Like")){
-                        data.add(movie);
-                    }
+                                    }
+                                }
 
-                    }
-                myMovieAdapter=new MyMovieAdapter(MyMovie.this, data);
-                listView.setAdapter(myMovieAdapter);
-            }
+                            myMovieAdapter = new MyMovieAdapter(MyMovie.this, data);
+                            listView.setAdapter(myMovieAdapter);
+                        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }
     }
 }

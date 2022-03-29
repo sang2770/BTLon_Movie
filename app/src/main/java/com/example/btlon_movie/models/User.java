@@ -67,6 +67,9 @@ public class User {
     public void setMyList(List<Movie> myList) {
         MyList = myList;
     }
+    public void addMyList(Movie myMovie) {
+        MyList.add(myMovie);
+    }
 
     @Override
     public String toString() {

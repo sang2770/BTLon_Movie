@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
                             }
                             movie.setCategory(DScategory);
                             movie.setCountry(DScountry);
+                            
                             if(keys==""){
                                 lstMovie.add(movie);
 

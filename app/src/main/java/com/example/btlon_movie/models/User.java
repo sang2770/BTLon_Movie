@@ -11,15 +11,6 @@ public class User {
     private String Password;
     private String Type;
     private List<IDMovie> MyList;
-    public class IDMovie{
-        private int ID;
-        public IDMovie() {
-        }
-        public IDMovie(int ID) {
-            this.ID = ID;
-        }
-
-    }
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }

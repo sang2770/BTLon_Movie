@@ -53,14 +53,16 @@ public class UserActivity extends AppCompatActivity {
         if(user!=null)
         {
             String id = user.getUid();
-            mDatabase = FirebaseDatabase.getInstance().getReference();
-            mDatabase.child("User").child(id).addValueEventListener(new ValueEventListener() {
+            FirebaseDatabase database=FirebaseDatabase.getInstance();
+            DatabaseReference myref= database.getReference();
+
+            myref.child("User").child(id).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    progressDialog.dismiss();
-                    User user=dataSnapshot.getValue(User.class);
-                    TxtEmail.setText(user.getAccount());
-                    TxtType.setText(user.getType());
+                   User user1=dataSnapshot.getValue(User.class);
+                    TxtEmail.setText(user1.getAccount());
+                    TxtType.setText(user1.getType());
+
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {

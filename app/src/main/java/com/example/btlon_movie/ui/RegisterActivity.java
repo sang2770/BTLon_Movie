@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.btlon_movie.R;
+import com.example.btlon_movie.models.Movie;
 import com.example.btlon_movie.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText TxtEmail, TxtPassword;
@@ -99,7 +103,8 @@ public class RegisterActivity extends AppCompatActivity {
     private User CreateAccount(String email, String password, String Uuid)
     {
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        User user=new User(Uuid, email, password, "Client");
+        List<Movie> k=new ArrayList<>();
+        User user=new User(Uuid, email, password, "Client",k);
         return user;
     }
 }

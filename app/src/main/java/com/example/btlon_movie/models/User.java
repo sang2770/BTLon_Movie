@@ -15,17 +15,13 @@ public class User {
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
-    public User(String ID, String account, String password, String type) {
+
+    public User(String ID, String account, String password, String type, List<Movie> myList) {
         this.ID = ID;
         Account = account;
         Password = password;
         Type = type;
-    }
-
-    public User(String ID, String account, String type) {
-        this.ID = ID;
-        Account = account;
-        Type = type;
+        MyList = myList;
     }
 
     public String getID() {
@@ -66,9 +62,6 @@ public class User {
 
     public void setMyList(List<Movie> myList) {
         MyList = myList;
-    }
-    public void addMyList(Movie myMovie) {
-        MyList.add(myMovie);
     }
 
     @Override

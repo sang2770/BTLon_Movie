@@ -76,10 +76,10 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
 
         //Khởi lạo list thể loại
         lstCategory=new ArrayList<>();
-        getListdata("","Category");
+        //getListdata("","Category");
         //list country
         lstCountry=new ArrayList<>();
-        getListdata("","Country");
+      //  getListdata("","Country");
         //khơi tao list movie_category
         lstMovieCategory=new ArrayList<>();
         lstMovie= new ArrayList<>();

@@ -10,13 +10,12 @@ public class User {
     private String Account;
     private String Password;
     private String Type;
-    private List<Movie> MyList;
-
+    private List<IDMovie> MyList;
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String ID, String account, String password, String type, List<Movie> myList) {
+    public User(String ID, String account, String password, String type, List<IDMovie> myList) {
         this.ID = ID;
         Account = account;
         Password = password;
@@ -56,13 +55,14 @@ public class User {
         Type = type;
     }
 
-    public List<Movie> getMyList() {
+    public List<IDMovie> getMyList() {
         return MyList;
     }
 
-    public void setMyList(List<Movie> myList) {
+    public void setMyList(List<IDMovie> myList) {
         MyList = myList;
     }
+
 
     @Override
     public String toString() {

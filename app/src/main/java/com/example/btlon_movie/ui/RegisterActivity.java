@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.btlon_movie.R;
+import com.example.btlon_movie.models.IDMovie;
 import com.example.btlon_movie.models.Movie;
 import com.example.btlon_movie.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -103,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
     private User CreateAccount(String email, String password, String Uuid)
     {
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        List<Movie> k=new ArrayList<>();
+        List<IDMovie> k=new ArrayList<>();
         User user=new User(Uuid, email, password, "Client",k);
         return user;
     }

@@ -77,7 +77,7 @@ public class MyMovie extends AppCompatActivity {
                     myref.child("Movie").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
-
+                                data.clear();
                                 for (DataSnapshot sanp : snapshot1.getChildren()) {
                                     Movie movie = sanp.getValue(Movie.class);
                                     if (snapshot.hasChild("" + movie.getID())) {

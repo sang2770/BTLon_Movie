@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
 
                             }
                             else{
-                                for(int i=1;i<=sanp.child("Category").getChildrenCount();i++){
+                                for(int i=0;i<sanp.child("Category").getChildrenCount();i++){
                                     String theloai=sanp.child("Category/"+i+"/Name").getValue().toString();
 
                                     if(theloai.equals(keys))

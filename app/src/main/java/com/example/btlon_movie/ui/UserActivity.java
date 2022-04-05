@@ -59,9 +59,12 @@ public class UserActivity extends AppCompatActivity {
             myref.child("User").child(id).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                   User user1=dataSnapshot.getValue(User.class);
-                    TxtEmail.setText(user1.getAccount());
-                    TxtType.setText(user1.getType());
+                    progressDialog.dismiss();
+                    String email=dataSnapshot.child("account").getValue(String.class);
+                    String type=dataSnapshot.child("type").getValue(String.class);
+//                   User user1=dataSnapshot.getValue(User.class);
+                    TxtEmail.setText(email);
+                    TxtType.setText(type);
 
                 }
                 @Override

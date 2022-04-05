@@ -56,7 +56,7 @@ public class UserActivity extends AppCompatActivity {
             FirebaseDatabase database=FirebaseDatabase.getInstance();
             DatabaseReference myref= database.getReference();
 
-            myref.child("User").child(id).addValueEventListener(new ValueEventListener() {
+            myref.child("user").child(id).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     progressDialog.dismiss();

@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void initEvent()
     {
+        // Đăng nhập
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 Login();
             }
         });
+        // Đăng ký
         Change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

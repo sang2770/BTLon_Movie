@@ -60,7 +60,7 @@ public class SlidePagesAdapter extends PagerAdapter {
         container.addView(slideLayout);
         return slideLayout;
     }
-
+    
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view==object;

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.btlon_movie.R;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -24,9 +25,16 @@ public class VideoActivity extends AppCompatActivity {
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = intent.getStringExtra("IdVideo").split("=")[1].trim();
-                youTubePlayer.loadVideo(videoId, 0);
-                youTubePlayer.play();
+
+                String[] videoId = intent.getStringExtra("IdVideo").split("=");
+                if(videoId.length>2)
+                {
+                    Toast.makeText(VideoActivity.this, "Video không thể phát", Toast.LENGTH_SHORT).show();
+                }else{
+                    youTubePlayer.loadVideo(videoId[1].trim(), 0);
+                    youTubePlayer.play();
+                }
+
             }
         });
     }

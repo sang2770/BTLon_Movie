@@ -32,7 +32,7 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText TxtEmail, TxtPassword;
-    Button btnLogin;
+    Button btnRegister;
     TextView Change;
     ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
@@ -46,14 +46,14 @@ public class RegisterActivity extends AppCompatActivity {
     private void initUi() {
         TxtEmail=findViewById(R.id.RegisterEmail);
         TxtPassword=findViewById(R.id.RegisterPassword);
-        btnLogin=findViewById(R.id.BtnRegister);
+        btnRegister=findViewById(R.id.BtnRegister);
         Change=findViewById(R.id.ChangeLogin);
         progressDialog=new ProgressDialog(this);
 
     }
     private void initEvent()
     {
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Register();

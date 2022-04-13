@@ -42,10 +42,14 @@
         <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout-v23/item_movie.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_main.xml" value="0.12" />
         <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_movie_detail.xml" value="0.2992125984251969" />
-        <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_register.xml" value="0.1" />
-        <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_user.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_my_movie.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_register.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_user.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/activity_video.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/item_cast.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/item_movie.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/myitemmovie.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/layout/silde_item.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Administrator/BTLon_Movie/app/src/main/res/menu/bottom_menu.xml" value="0.17552083333333332" />
       </map>

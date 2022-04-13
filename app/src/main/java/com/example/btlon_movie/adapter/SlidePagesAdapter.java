@@ -1,6 +1,7 @@
 package com.example.btlon_movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import com.example.btlon_movie.DownloadImageTask;
 import com.example.btlon_movie.R;
 import com.example.btlon_movie.models.Movie;
 import com.example.btlon_movie.models.Slide;
+import com.example.btlon_movie.ui.MovieDetailActivity;
+import com.example.btlon_movie.ui.VideoActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -43,7 +47,16 @@ public class SlidePagesAdapter extends PagerAdapter {
                 .execute(ListSlide.get(position).getImage());
 
         SlideTitle.setText(ListSlide.get(position).getName());
-
+        //Play Video
+        FloatingActionButton play_fab = slideLayout.findViewById(R.id.PlayVideoSlide);
+        play_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentPlay = new Intent(context, VideoActivity.class);
+                intentPlay.putExtra("IdVideo", ListSlide.get(position).getLink());
+                context.startActivity(intentPlay);
+            }
+        });
         container.addView(slideLayout);
         return slideLayout;
     }

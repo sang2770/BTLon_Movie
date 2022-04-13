@@ -71,10 +71,10 @@ public class MyMovie extends AppCompatActivity {
         DatabaseReference myref = database.getReference();
         if (user != null) {
             String IDuser = user.getUid();
-            myref.child("User/" + IDuser + "/MyList").addValueEventListener(new ValueEventListener() {
+            myref.child("user/" + IDuser + "/mylist").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    myref.child("Movie").addValueEventListener(new ValueEventListener() {
+                    myref.child("movie").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                 data.clear();

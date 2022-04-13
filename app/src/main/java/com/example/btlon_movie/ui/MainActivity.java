@@ -84,36 +84,36 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
         lstMovieCategory=new ArrayList<>();
         lstMovie= new ArrayList<>();
         MoveRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
-        getListdata("","Movie");
+        getListdata("","movie");
         Categorytab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()){
                     case 0:
                         lstMovie.clear();
-                        getListdata("","Movie");
+                        getListdata("","movie");
                         break;
                     case 1:
                         lstMovie.clear();
-                        getListdata("Action","Movie");
+                        getListdata("Action","movie");
 
                         break;
                     case 2:
 
                         lstMovie.clear();
-                        getListdata("Drama","Movie");
+                        getListdata("Drama","movie");
                         break;
                     case 3:
                         lstMovie.clear();
-                        getListdata("Horror","Movie");
+                        getListdata("Horror","movie");
                         break;
                     case 4:
                         lstMovie.clear();
-                        getListdata("Cartoon","Movie");
+                        getListdata("Cartoon","movie");
                         break;
                     case 5:
                         lstMovie.clear();
-                        getListdata("Adventure","Movie");
+                        getListdata("Adventure","movie");
                         break;
                 }
 
@@ -163,16 +163,16 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for(DataSnapshot sanp:snapshot.getChildren()){
-                        if(child=="Movie"){
+                        if(child=="movie"){
                             Movie movie=sanp.getValue(Movie.class);
                             DScategory.clear();
                             DScountry.clear();
-                            for(int i=1;i<=sanp.child("Category").getChildrenCount();i++){
-                                Category category=sanp.child("Category/"+i).getValue(Category.class);
+                            for(int i=1;i<=sanp.child("category").getChildrenCount();i++){
+                                Category category=sanp.child("category/"+i).getValue(Category.class);
                                 DScategory.add(category);
                             }
-                            for(int i=1;i<=sanp.child("Country").getChildrenCount();i++){
-                                Country country=sanp.child("Country/"+i).getValue(Country.class);
+                            for(int i=1;i<=sanp.child("country").getChildrenCount();i++){
+                                Country country=sanp.child("country/"+i).getValue(Country.class);
                                 DScountry.add(country);
                             }
                             movie.setCategory(DScategory);
@@ -183,8 +183,11 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
 
                             }
                             else{
-                                for(int i=0;i<sanp.child("Category").getChildrenCount();i++){
-                                    String theloai=sanp.child("Category/"+i+"/Name").getValue().toString();
+
+                                for(int i=0;i<sanp.child("category").getChildrenCount();i++){
+                                    String theloai=sanp.child("category/"+i+"/name").getValue().toString();
+
+
                                     if(theloai.equals(keys))
                                     {
                                         lstMovie.add(movie);
@@ -192,11 +195,11 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
                                 }
                             }
                         }
-                        if(child=="Category"){
+                        if(child=="category"){
                             Category category=sanp.getValue(Category.class);
                             lstCategory.add(category);
                         }
-                        if(child=="Country"){
+                        if(child=="country"){
                             Country country =sanp.getValue(Country.class);
                             lstCountry.add(country);
                         }
@@ -212,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
             }
         });
     }
-
+    // click vào 1 item movie
     @Override
     public void onMovieClick(Movie movie, ImageView movieImageView) {
         //tạo vận chuyển animation giữa 2 actyvity
@@ -257,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
     }
     void GetDataSlider()
     {
-        myref.child("Movie").addValueEventListener(new ValueEventListener() {
+        myref.child("movie").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot sanp:snapshot.getChildren()){

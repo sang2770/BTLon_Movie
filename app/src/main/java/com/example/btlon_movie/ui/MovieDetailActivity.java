@@ -111,7 +111,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             DatabaseReference myref = database.getReference();
             if (user != null) {
                 String IDuser = user.getUid();
-                myref.child("User/" + IDuser + "/MyList").addValueEventListener(new ValueEventListener() {
+                myref.child("user/" + IDuser + "/mylist").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.hasChild(""+ID)){
@@ -137,10 +137,10 @@ public class MovieDetailActivity extends AppCompatActivity {
 
 
                         if(b){
-                            myref.child("User/" + IDuer + "/MyList/" + ID + "/ID").setValue(ID);
+                            myref.child("user/" + IDuer + "/mylist/" + ID + "/id").setValue(ID);
                         }
                         else{
-                            myref.child("User/" + IDuer + "/MyList/" + ID).removeValue();
+                            myref.child("user/" + IDuer + "/mylist/" + ID).removeValue();
                         }
 
 

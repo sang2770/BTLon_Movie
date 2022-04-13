@@ -66,6 +66,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         return mdata.size();
     }
 
+    //view du lieu hiện thị
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView TvTitle;
         private ImageView ImgMovie;

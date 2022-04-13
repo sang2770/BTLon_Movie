@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success
                             FirebaseUser user = mAuth.getCurrentUser();
                             User Account= CreateAccount(user.getEmail(), password, user.getUid());
-                            mDatabase.child("User").child(user.getUid()).setValue(Account);
+                            mDatabase.child("user").child(user.getUid()).setValue(Account);
 
                             Intent intent=new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(intent);

@@ -101,12 +101,15 @@ public class MyMovieAdapter extends BaseAdapter {
                 context.startActivity(intentPlay);
             }
         });
+        //xoa phim yêu thích
         viewHolder.BtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //hiện bảng thôn gbaos bạn có muốn xóa không
                 AlertDialog Confirm=new AlertDialog.Builder(context).create();
                 Confirm.setTitle("Warning");
                 Confirm.setMessage("Bạn có chắc chắn muốn xóa không");
+                //nhấn xác nhận
                 Confirm.setButton(AlertDialog.BUTTON_POSITIVE, "Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int index) {
@@ -114,9 +117,12 @@ public class MyMovieAdapter extends BaseAdapter {
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         DatabaseReference myref = database.getReference();
-                        Log.d("delete", String.valueOf(data.get(i).getID()));
+
+                        //Log.d("delete", String.valueOf(data.get(i).getID()));
+                        //truy cập đến id cần xóa để xóa
                         myref.child("user").child(user.getUid()).child("mylist").child(String.valueOf(data.get(i).getID()))
                                 .removeValue(new DatabaseReference.CompletionListener() {
+                                    //xác nhận xóa thành công
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                                         Toast.makeText(context, "Bạn đã xóa thành công", Toast.LENGTH_SHORT).show();

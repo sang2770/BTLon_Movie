@@ -66,11 +66,13 @@ public class MyMovie extends AppCompatActivity {
         });
     }
     private void getListdata() {
+        //lay thong tin ngươi dung
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        // khởi tạo firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref = database.getReference();
         if (user != null) {
-            String IDuser = user.getUid();
+            String IDuser = user.getUid();//lấy iD người dùng hiện tại
             myref.child("user/" + IDuser + "/mylist").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -80,6 +82,7 @@ public class MyMovie extends AppCompatActivity {
                                 data.clear();
                                 for (DataSnapshot sanp : snapshot1.getChildren()) {
                                     Movie movie = sanp.getValue(Movie.class);
+                                    //kiểm tra xem id phim trong mylist có trùng với id move mình so sánh
                                     if (snapshot.hasChild("" + movie.getID())) {
                                         data.add(movie);
 

@@ -115,7 +115,7 @@ public class MyMovieAdapter extends BaseAdapter {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         DatabaseReference myref = database.getReference();
                         Log.d("delete", String.valueOf(data.get(i).getID()));
-                        myref.child("User").child(user.getUid()).child("MyList").child(String.valueOf(data.get(i).getID()))
+                        myref.child("user").child(user.getUid()).child("mylist").child(String.valueOf(data.get(i).getID()))
                                 .removeValue(new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
